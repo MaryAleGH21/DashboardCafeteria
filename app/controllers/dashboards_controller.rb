@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
   def index
-    @sales_grouped_by_month = Coffee.group("strftime('%m-%Y', date_time)").order(date_time: :asc).order(created_at: :asc).sum(:amount)
+    @coffee_in_month = Coffee.group_by_month(:created_at).count
   end
 end
